@@ -190,3 +190,47 @@ export const userApi = {
     return request.delete(`/users/${id}`)
   }
 }
+
+export const logApi = {
+  getLoginLogs(params) {
+    return request.get('/logs/login', { params })
+  },
+  
+  getGradeChangeLogs(params) {
+    return request.get('/logs/grade-change', { params })
+  },
+  
+  getDataImportLogs(params) {
+    return request.get('/logs/data-import', { params })
+  },
+  
+  exportLoginLogs(params) {
+    let url = `/api/logs/login/export?token=${localStorage.getItem('token')}`
+    if (params?.username) url += `&username=${encodeURIComponent(params.username)}`
+    if (params?.success !== undefined && params.success !== null) url += `&success=${params.success ? 1 : 0}`
+    if (params?.startTime) url += `&startTime=${encodeURIComponent(params.startTime)}`
+    if (params?.endTime) url += `&endTime=${encodeURIComponent(params.endTime)}`
+    return url
+  },
+  
+  exportGradeChangeLogs(params) {
+    let url = `/api/logs/grade-change/export?token=${localStorage.getItem('token')}`
+    if (params?.operator) url += `&operator=${encodeURIComponent(params.operator)}`
+    if (params?.studentId) url += `&studentId=${params.studentId}`
+    if (params?.courseId) url += `&courseId=${params.courseId}`
+    if (params?.operationType) url += `&operationType=${encodeURIComponent(params.operationType)}`
+    if (params?.startTime) url += `&startTime=${encodeURIComponent(params.startTime)}`
+    if (params?.endTime) url += `&endTime=${encodeURIComponent(params.endTime)}`
+    return url
+  },
+  
+  exportDataImportLogs(params) {
+    let url = `/api/logs/data-import/export?token=${localStorage.getItem('token')}`
+    if (params?.operator) url += `&operator=${encodeURIComponent(params.operator)}`
+    if (params?.dataType) url += `&dataType=${encodeURIComponent(params.dataType)}`
+    if (params?.importMethod) url += `&importMethod=${encodeURIComponent(params.importMethod)}`
+    if (params?.startTime) url += `&startTime=${encodeURIComponent(params.startTime)}`
+    if (params?.endTime) url += `&endTime=${encodeURIComponent(params.endTime)}`
+    return url
+  }
+}

@@ -95,6 +95,9 @@ class Router
         $this->addRoute('GET', '/logs/login', 'LogController', 'loginLogs', true);
         $this->addRoute('GET', '/logs/grade-change', 'LogController', 'gradeChangeLogs', true);
         $this->addRoute('GET', '/logs/data-import', 'LogController', 'dataImportLogs', true);
+        $this->addRoute('GET', '/logs/login/export', 'LogController', 'exportLoginLogs', true);
+        $this->addRoute('GET', '/logs/grade-change/export', 'LogController', 'exportGradeChangeLogs', true);
+        $this->addRoute('GET', '/logs/data-import/export', 'LogController', 'exportDataImportLogs', true);
     }
     
     /**

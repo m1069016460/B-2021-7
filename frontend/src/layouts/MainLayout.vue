@@ -49,6 +49,11 @@
           <el-icon><UserFilled /></el-icon>
           <template #title>用户管理</template>
         </el-menu-item>
+        
+        <el-menu-item v-if="userStore.isAdmin" index="/logs">
+          <el-icon><Document /></el-icon>
+          <template #title>日志管理</template>
+        </el-menu-item>
       </el-menu>
     </aside>
     
